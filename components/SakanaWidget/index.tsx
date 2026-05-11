@@ -8,10 +8,21 @@ import SakanaWidget from 'sakana-widget';
 const Widget = () => {
   useEffect(() => {
     let inst: SakanaWidget | null = null;
-    const el = document.querySelector('#sakana-widget');
-    if (el && !el.classList.length) {
-      inst = new SakanaWidget().mount('#sakana-widget');
-    }
+
+    const mountWidget = () => {
+      if (inst) return inst;
+      inst = new SakanaWidget({ saveState: true })
+        .addStateListener((state) => {
+          if (window._changeSakanaState) {
+            window._changeSakanaState(state);
+          }
+        })
+        .mount('#sakana-widget');
+      window._sakana = inst;
+      return inst;
+    };
+    mountWidget();
+
     return () => {
       if (inst) {
         inst.unmount();

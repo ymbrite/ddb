@@ -59,13 +59,20 @@
 
 .links {
   margin-top: variables.$space-xl;
-  padding: 5px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   @include variables.responsive(md) {
     margin-top: variables.$space-lg;
+  }
+
+  &__inner {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__item {
@@ -90,6 +97,30 @@
 
     &:active {
       background-color: var(--color-bg-active);
+    }
+  }
+
+  .sakanawbtn {
+    cursor: pointer;
+    padding: 0 8px;
+    outline: none;
+    border: none;
+    border-radius: variables.$radius-sm;
+    background-color: transparent;
+    transition: background-color variables.$trans-fast ease;
+    text-decoration: none;
+    margin-bottom: 5px;
+
+    &:hover {
+      background-color: var(--color-bg-hover);
+    }
+
+    &:focus {
+      background-color: var(--color-bg-hover);
+    }
+
+    @include variables.responsive(md) {
+      display: none;
     }
   }
 }

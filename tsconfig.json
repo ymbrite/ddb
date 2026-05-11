@@ -1,14 +1,29 @@
 {
-  "extends": "@dsrca/config/tsconfig",
   "compilerOptions": {
-    "jsx": "preserve",
-    "baseUrl": ".",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "plugins": [{ "name": "next" }],
+    "jsx": "react-jsx",
+    "incremental": true,
     "paths": {
       "@/*": ["./*"]
-    },
-    "incremental": true,
-    "plugins": [{ "name": "next" }]
+    }
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
